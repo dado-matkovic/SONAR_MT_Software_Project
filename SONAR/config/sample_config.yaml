@@ -1,0 +1,13 @@
+max_samples: 50000
+
+# Output directory for sampled datasets  
+output_dir: "./nllb_datasets/sampled_data"
+
+# Paths to your datasets
+dataset_paths:
+  - "./nllb_datasets/deu_Latn-fra_Latn"
+  - "./nllb_datasets/deu_Latn-eng_Latn"
+  - "./nllb_datasets/deu_Latn-spa_Latn"
+  - "./nllb_datasets/eng_Latn-fra_Latn"
+  - "./nllb_datasets/eng_Latn-spa_Latn"
+  - "./nllb_datasets/spa_Latn-fra_Latn"

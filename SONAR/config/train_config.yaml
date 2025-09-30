@@ -1,0 +1,68 @@
+data:
+  train_data_paths: 
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_eng_Latn_tokenized/train"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/train"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/train"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/train"
+    - "/app/nllb_datasets/preprocessed_data/eng_Latn_spa_Latn_tokenized/train"
+    - "/app/nllb_datasets/preprocessed_data/eng_Latn_spa_Latn_tokenized/train"
+
+  dev_data_paths: 
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_eng_Latn_tokenized/validation"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/validation"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/validation"
+    - "/app/nllb_datasets/preprocessed_data/deu_Latn_fra_Latn_tokenized/validation"
+    - "/app/nllb_datasets/preprocessed_data/eng_Latn_spa_Latn_tokenized/validation"
+    - "/app/nllb_datasets/preprocessed_data/eng_Latn_spa_Latn_tokenized/validation"
+
+  languages: ["eng_Latn", "spa_Latn", "deu_Latn", "fra_Latn"]
+  min_text_length: 3
+
+tokenizer: "facebook/nllb-200-distilled-1.3B"
+model:
+  nllb_model_name: "facebook/nllb-200-distilled-1.3B"
+  embedding_dim: 1024
+  encoder_layers: 24
+  decoder_layers: 24
+  encoder_embed_dim: 1024
+  decoder_embed_dim: 1024
+  encoder_attention_heads: 16
+  decoder_attention_heads: 16
+  encoder_ffn_dim: 4096
+  decoder_ffn_dim: 4096
+  dropout: 0.1
+
+training:
+  batch_size: 8
+  learning_rate: 5e-5
+  weight_decay: 0.01
+  num_epochs: 100
+  warmup_steps: 4000
+  max_grad_norm: 1.0
+  
+  # Loss weights
+  mt: 1.0
+  mse: 0.1
+  dae: 0.01
+  noise_std : 0.3
+
+  # Checkpointing
+  save_steps: 3
+  eval_steps: 3
+  logging_steps: 1
+  
+  # Mixed precision and optimization
+  fp16: True
+  gradient_accumulation_steps: 1
+
+# Logging and output
+logging:
+  output_dir: "./sonar_checkpoints"
+  wandb_project: "sonar-text"
+  wandb_run_name: "sonarRun"
+  
+# Other
+seed: 42
+resume_from_checkpoint: null
+
+device: "cuda"

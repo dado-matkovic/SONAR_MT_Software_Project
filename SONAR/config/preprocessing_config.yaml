@@ -1,0 +1,21 @@
+data:
+  target_languages: 
+    - "eng_Latn"
+    - "spa_Latn" 
+    - "deu_Latn"
+    - "fra_Latn"
+  
+max_length: 512      
+min_length: 3     
+val_ratio: 0.05
+dataset_paths:
+  - "./nllb_datasets/sampled_data/deu_Latn-fra_Latn_sampled"
+  - "./nllb_datasets/sampled_data/deu_Latn-eng_Latn_sampled"
+  - "./nllb_datasets/sampled_data/deu_Latn-spa_Latn_sampled"
+  - "./nllb_datasets/sampled_data/eng_Latn-fra_Latn_sampled"
+  - "./nllb_datasets/sampled_data/eng_Latn-spa_Latn_sampled"
+  - "./nllb_datasets/sampled_data/spa_Latn-fra_Latn_sampled"
+
+output:
+  output_dir: "./nllb_datasets/preprocessed_data"
+
